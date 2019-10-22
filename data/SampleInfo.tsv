@@ -1,0 +1,9 @@
+Sample	Read1	Read2
+Input	Input_R1.fastq	Input_R2.fastq
+Round1_gate1	R1G1_R1.fastq	R1G1_R2.fastq
+Round1_gate2	R1G2_R1.fastq	R1G2_R2.fastq
+Round1_gate3	R1G3_R1.fastq	R1G3_R2.fastq
+Round2_gate1	R2G1_R1.fastq	R2G1_R2.fastq
+Round2_gate2	R2G2_R1.fastq	R2G2_R2.fastq
+Round2_gate3	R2G3_R1.fastq	R2G3_R2.fastq
+

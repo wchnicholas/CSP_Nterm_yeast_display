@@ -1,1 +1,18 @@
-# CSP_Nterm_yeast_display
+This README describes the scripts used for analyzing the deep mutational scanning of CSP N-terminal domain using yeast display. Antibody 5D5 was used for selection. 
+
+### REQUIREMENTS:
+* [Python](https://www.python.org/) version 2.7
+* [R](https://www.r-project.org) version 3.6.1
+
+### FILES
+* All raw sequencing reads, which can be downloaded from NIH SRA database PRJNAXXXXXX, should be placed in fastq/ folder. The filenames should match those described in [./data/SampleInfo.tsv](./data/SampleInfo.tsv).
+* [./data/SampleInfo.tsv](./data/SampleInfo.tsv): Describe the FASTQ filenames of the raw sequencing read
+* [./Fasta/WT\_pep.fa](./Fasta/WT\_pep.fa): Protein sequence of the wild type
+* [./ref\_seqs.fa](./ref\_seqs.fa): Reference sequences for mapping
+
+### ANALYSIS PIPELINE
+1. [./script/fastq2mut.py](./script/fastq2mut.py): Converts raw reads to variant counts 
+    - Input file:
+      - Raw sequencing reads in fastq/ folder
+    - Output file:
+      - [./result/nterm\_CSP\_sub_count.tsv](./result/nterm\_CSP\_sub_count.tsv)
