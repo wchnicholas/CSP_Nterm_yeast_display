@@ -1,6 +1,6 @@
-This README describes the scripts used for analyzing the deep mutational scanning of circumsporozoite protein (CSP) N-terminal domain from Plasmodium falciparum using yeast display. Antibody 5D5 was used for selection. 
+This README describes the scripts used for analyzing the deep mutational scanning of circumsporozoite protein (CSP) N-terminal domain from Plasmodium falciparum using yeast display. Antibody 5D5 was used for selection.
 
-### REQUIREMENTS:
+### REQUIREMENTS
 * [Python](https://www.python.org/) version 2.7
 * [R](https://www.r-project.org) version 3.6.1
 

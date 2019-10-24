@@ -39,7 +39,7 @@ plot_enrich_heatmap <- function(norm_enrich_table){
                                        barwidth = 0.5, barheight = 6, title="Value")) +
           xlab("Residue") +
           ylab("Amino acid")
-  ggsave('graph/norm_affinity_heatmap.png',p,width=7,height=2.2)
+  ggsave('graph/norm_affinity_heatmap.png',p,width=7, height=2.2, dpi=1200)
   }
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W'))
@@ -69,7 +69,7 @@ norm_enrich_table <- enrich_table %>%
                        mutate(aa=str_sub(Mut,-1,-1)) %>%
                        filter(aa %in% aa_level) %>%
                        mutate(aa=factor(aa,levels=aa_level)) %>%
-                       mutate(Pos=factor(Pos,levels=as.character(seq(1,72)))) %>%
+                       mutate(Pos=factor(Pos,levels=as.character(seq(26,97)))) %>%
                        arrange(Pos) %>%
                        mutate(resi=factor(resi,levels=unique(resi))) %>%
                        select(Mut, resi, Pos, aa, norm_affinity)

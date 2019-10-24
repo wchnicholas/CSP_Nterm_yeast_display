@@ -122,7 +122,7 @@ def Read2Mut2Count(R1_file, Count_dict, Sample, refseq_dict, barcode_dict):
       Count_dict[Sample][sub] += 1
   return Count_dict
 
-def Output(Count_dict, Sample_outfile):
+def Output(Count_dict, Sample_outfile, position_offset):
   Samples = Count_dict.keys()
   outfile = open(Sample_outfile,'w')
   print "Compiling results into files with prefix: %s" % Sample_outfile
@@ -131,10 +131,12 @@ def Output(Count_dict, Sample_outfile):
   for Sample in Samples:
     for Mut in Muts:
       count = Count_dict[Sample][Mut]
+      Mut = Mut[0]+str(int(Mut[1:-1])+position_offset)+Mut[-1] if Mut != 'WT' else 'WT'
       outfile.write("\t".join(map(str,[Mut, Sample, count]))+"\n")
   outfile.close()
 
 def main():
+  position_offset = 25
   refseq_file    = 'Fasta/ref_seqs.fa'
   Sample_outfile = 'result/nterm_CSP_sub_count.tsv'
   refseq_dict    = ReadingRefSeq(refseq_file)
@@ -145,7 +147,7 @@ def main():
     Sample = R1_file.rsplit('/')[1].rsplit('_')[0]
     if Sample not in Count_dict.keys(): Count_dict[Sample] = defaultdict(int)
     Count_dict = Read2Mut2Count(R1_file, Count_dict, Sample, refseq_dict, barcode_dict)
-  Output(Count_dict, Sample_outfile)
+  Output(Count_dict, Sample_outfile, position_offset)
 
 if __name__ == "__main__":
   main()
