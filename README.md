@@ -4,7 +4,7 @@ This README describes the scripts used for analyzing the deep mutational scannin
 * [Python](https://www.python.org/) version 2.7
 * [R](https://www.r-project.org) version 3.6.1
 
-### FILES
+### INPUT FILES
 * All raw sequencing reads, which can be downloaded from NIH SRA database [PRJNA578947](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA578947), should be placed in fastq/ folder. The filenames should match those described in [./data/SampleInfo.tsv](./data/SampleInfo.tsv).
 * [./data/SampleInfo.tsv](./data/SampleInfo.tsv): Describe the FASTQ filenames of the raw sequencing read
 * [./Fasta/WT\_pep.fa](./Fasta/WT\_pep.fa): Protein sequence of the wild type
