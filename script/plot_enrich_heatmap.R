@@ -15,6 +15,7 @@ plot_enrich_heatmap <- function(norm_enrich_table){
   textsize <- 7
   p <-  ggplot(norm_enrich_table,aes(x=resi,y=aa,fill=log10(norm_affinity))) +
           geom_tile() +
+          labs("Dose (mg)") +
           scale_fill_gradientn(colours=c("blue", "white", "red"),
                 limits=c(-5.5,1.5),
                 values=rescale(c(-5.5, 0, 1.5)),
@@ -28,15 +29,14 @@ plot_enrich_heatmap <- function(norm_enrich_table){
                 axis.text.y=element_text(hjust=0.5,vjust=0.5,colour = 'black'),
                 axis.title=element_text(size=textsize,face="bold"),
                 axis.line = element_line(colour = 'black', size = 0),
-                legend.title=element_blank(),
                 panel.border = element_rect(colour = "black", fill=NA, size=1)) +
-          guides(fill = guide_colorbar(title.theme=element_blank(),
+          guides(fill = guide_colorbar(title.theme=element_text(size=textsize,face="bold",colour='black',hjust=0.5),
                                        label.theme=element_text(size=textsize,face="bold",colour='black'),
                                        frame.colour="black",
                                        frame.linewidth = 1,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Value")) +
+                                       barwidth = 0.5, barheight = 6, title="Relative\naffinity")) +
           xlab("Residue") +
           ylab("Amino acid")
   ggsave('graph/norm_affinity_heatmap.png',p,width=7, height=2.2, dpi=1200)
