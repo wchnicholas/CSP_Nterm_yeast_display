@@ -24,5 +24,6 @@ This README describes the scripts used for analyzing the deep mutational scannin
 3. [./script/plot_enrich_heatmap.R](./script/plot_enrich_heatmap.R): Plot the enrichment heatmap that represents the 5D5 selection
     - Input file:
       - [./result/nterm\_CSP\_sub_count.tsv](./result/nterm\_CSP\_sub_count.tsv)
+      - [./data/WT_heatmap.tsv](./data/WT_heatmap.tsv)
     - Output file:
       - [./graph/norm_affinity_heatmap.png](./graph/norm_affinity_heatmap.png)
