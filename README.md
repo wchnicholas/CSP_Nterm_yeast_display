@@ -16,7 +16,12 @@ This README describes the scripts used for analyzing the deep mutational scannin
       - Raw sequencing reads in fastq/ folder
     - Output file:
       - [./result/nterm\_CSP\_sub_count.tsv](./result/nterm\_CSP\_sub_count.tsv)
-2. [./script/plot_enrich_heatmap.R](./script/plot_enrich_heatmap.R): Plot the enrichment heatmap that represents the 5D5 selection
+2. [./script/generate_WT_heatmap.py](./script/generate_WT_heatmap.py): Generate a file that describes the location of the wild type residues when plotting heatmap
+    - Input file:
+      - [./Fasta/WT\_pep.fa](./Fasta/WT\_pep.fa)
+    - Output file:
+      - [./data/WT_heatmap.tsv](./data/WT_heatmap.tsv)
+3. [./script/plot_enrich_heatmap.R](./script/plot_enrich_heatmap.R): Plot the enrichment heatmap that represents the 5D5 selection
     - Input file:
       - [./result/nterm\_CSP\_sub_count.tsv](./result/nterm\_CSP\_sub_count.tsv)
     - Output file:

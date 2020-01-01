@@ -9,12 +9,13 @@ library(stringr)
 library(dplyr)
 library(ggrepel)
 library(gridExtra)
+library(stringr)
 require(cowplot)
 
-plot_enrich_heatmap <- function(norm_enrich_table){
+plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
   textsize <- 7
-  p <-  ggplot(norm_enrich_table,aes(x=resi,y=aa,fill=log10(norm_affinity))) +
-          geom_tile() +
+  p <-  ggplot() +
+          geom_tile(data=norm_enrich_table,aes(x=resi,y=aa,fill=log10(norm_affinity))) +
           labs("Dose (mg)") +
           scale_fill_gradientn(colours=c("blue", "white", "red"),
                 limits=c(-5.5,1.5),
@@ -37,12 +38,14 @@ plot_enrich_heatmap <- function(norm_enrich_table){
                                        ticks = TRUE,
                                        ticks.colour = "black",
                                        barwidth = 0.5, barheight = 6, title="Relative\naffinity")) +
-          xlab("Residue") +
+          geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
+          xlab("Position") +
           ylab("Amino acid")
   ggsave('graph/norm_affinity_heatmap.png',p,width=7, height=2.2, dpi=1200)
   }
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W'))
+WTresibox  <- read_tsv('data/WT_heatmap.tsv')
 count_table  <- read_tsv('result/nterm_CSP_sub_count.tsv')
 frac_R1G1 <- (0.3829*470455+0.3945*470408)/(470455+470408)
 frac_R1G2 <- (0.0205*470455+0.0214*470408)/(470455+470408)
@@ -72,6 +75,6 @@ norm_enrich_table <- enrich_table %>%
                        mutate(Pos=factor(Pos,levels=as.character(seq(26,97)))) %>%
                        arrange(Pos) %>%
                        mutate(resi=factor(resi,levels=unique(resi))) %>%
+                       mutate(Pos=as.numeric(as.character(Pos))) %>%
                        select(Mut, resi, Pos, aa, norm_affinity)
-print (norm_enrich_table)
-plot_enrich_heatmap(norm_enrich_table)
+plot_enrich_heatmap(norm_enrich_table, WTresibox)
